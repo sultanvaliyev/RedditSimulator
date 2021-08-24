@@ -1,8 +1,9 @@
-from flask import Flask
+import os
+import sys
+sys.path.append(os.getcwd())
+from src.main import create_app
 
-app = Flask(__name__)
+app = create_app()
 
-@app.route("/")
-def index():
-    return "Hello World!"
-    
+if __name__ == "__main__":
+    app.run()

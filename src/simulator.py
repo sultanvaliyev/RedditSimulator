@@ -1,9 +1,14 @@
 import praw
 import markovify
-import keys
+import os
+
 
 def simulate_reply(post_url):
-    reddit = praw.Reddit(client_id= keys.client_id, client_secret= keys.secret , user_agent= keys.user_agent)
+    client_id = os.environ['client_id']
+    secret = os.environ['secret']
+    user_agent = os.environ['user_agent']
+
+    reddit = praw.Reddit(client_id= client_id, client_secret= secret , user_agent= user_agent)
     post = reddit.submission(url=  post_url)
 
     reply_list = []
